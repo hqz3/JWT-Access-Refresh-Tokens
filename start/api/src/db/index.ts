@@ -8,7 +8,7 @@ const users = [
 
 export const sessions: Record<
   string,
-  { sessionId: string; email: string; valid: boolean }
+  { sessionId: string; email: string; name: string; valid: boolean }
 > = {};
 
 export function getSession(sessionId: string) {
@@ -20,9 +20,7 @@ export function getSession(sessionId: string) {
 export function invalidateSession(sessionId: string) {
   const session = sessions[sessionId];
 
-  if (session) {
-    sessions[sessionId].valid = false;
-  }
+  if (session) sessions[sessionId].valid = false;
 
   return sessions[sessionId];
 }
@@ -31,7 +29,6 @@ export function createSession(email: string, name: string) {
   const sessionId = String(Object.keys(sessions).length + 1);
 
   const session = { sessionId, email, name, valid: true };
-
   sessions[sessionId] = session;
 
   return session;
