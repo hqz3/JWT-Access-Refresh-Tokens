@@ -24,3 +24,12 @@ export function getSessionHandler(req: Request, res: Response) {
   // @ts-ignore
   res.send(req.user);
 }
+
+export function deleteSessionHandler(req: Request, res: Response) {
+  res.cookie("accessToken", "", {
+    maxAge: 0,
+    httpOnly: true,
+  });
+
+  res.send({ success: true });
+}

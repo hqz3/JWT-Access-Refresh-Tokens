@@ -2,6 +2,7 @@ import { Express } from "express";
 import {
   createSessionHandler,
   getSessionHandler,
+  deleteSessionHandler,
 } from "../controllers/controller";
 
 function routes(app: Express) {
@@ -12,6 +13,7 @@ function routes(app: Express) {
   app.get("/api/session", getSessionHandler);
 
   // logout
+  app.delete("/api/session", deleteSessionHandler);
 }
 
 export default routes;
