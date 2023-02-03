@@ -12,7 +12,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "dev": "nodemon --config nodemon.json src/index.ts"
+    "dev": "nodemon src/index.ts"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
