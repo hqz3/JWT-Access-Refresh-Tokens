@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { verifyJWT } from "../utils/jwt";
 
 export default function deserializeUser(
@@ -10,7 +10,8 @@ export default function deserializeUser(
 
   if (!accessToken) return next();
 
-  const { payload } = verifyJWT(accessToken);
+  const { payload, expired } = verifyJWT(accessToken);
+  console.log("expired:", expired);
 
   if (payload) {
     // @ts-ignore
