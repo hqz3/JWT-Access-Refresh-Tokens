@@ -12,11 +12,15 @@ export function createSessionHandler(req: Request, res: Response) {
 
   // // create access token
   const accessToken = signJWT({ email: user.email, name: user.name }, "1h");
-  console.log(accessToken);
 
   // set access token in cookie
   res.cookie("accessToken", accessToken, { maxAge: 300000, httpOnly: true });
 
   // send user back
   res.send(verifyJWT(accessToken).payload);
+}
+
+export function getSessionHandler(req: Request, res: Response) {
+  // @ts-ignore
+  res.send(req.user);
 }
